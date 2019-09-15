@@ -53,7 +53,7 @@ router.post(
         email,
         phone,
         type,
-        useer: req.user.id
+        user: req.user.id
       });
 
       const contact = await newContact.save();
