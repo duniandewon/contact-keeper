@@ -1,40 +1,40 @@
-import React, { useReducer } from 'react';
-import uuid from 'uuid';
-import ContactContext from './contactContext';
-import contactReducer from './contactReducer';
+import React, { useReducer } from "react";
+import uuid from "uuid";
+import ContactContext from "./contactContext";
+import contactReducer from "./contactReducer";
 import {
   ADD_CONTACT,
   DELETE_CONTACT,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDTE_CONTACT,
+  UPDATE_CONTACT,
   FILTER_CONTACT,
   CLEAR_FILTER
-} from '../types';
+} from "../types";
 
 const ContactState = props => {
   const initialState = {
     contacts: [
       {
         id: 1,
-        name: 'Jill Johnson',
-        email: 'jill@johnson.com',
-        phone: '111-111-111',
-        type: 'personal'
+        name: "Jill Johnson",
+        email: "jill@johnson.com",
+        phone: "111-111-111",
+        type: "personal"
       },
       {
         id: 2,
-        name: 'Sara Watson',
-        email: 'sara@watson.com',
-        phone: '222-222-222',
-        type: 'personal'
+        name: "Sara Watson",
+        email: "sara@watson.com",
+        phone: "222-222-222",
+        type: "personal"
       },
       {
         id: 3,
-        name: 'Harry White',
-        email: 'harry@white.com',
-        phone: '333-333-333',
-        type: 'professional'
+        name: "Harry White",
+        email: "harry@white.com",
+        phone: "333-333-333",
+        type: "professional"
       }
     ],
     current: null
@@ -76,6 +76,12 @@ const ContactState = props => {
   };
 
   // Update Conttact
+  const updateContact = contact => {
+    dispatch({
+      type: UPDATE_CONTACT,
+      payload: contact
+    });
+  };
 
   // Filter Contacts
 
@@ -87,6 +93,7 @@ const ContactState = props => {
         contacts: state.contacts,
         current: state.current,
         addContact,
+        updateContact,
         deleteContact,
         setCurrent,
         clearCurrent
