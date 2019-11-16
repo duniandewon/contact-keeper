@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import ContactContext from "../../context/contact/contactContext";
-import contactContext from "../../context/contact/contactContext";
 
 const ContactFrom = () => {
   const [Contact, setContact] = useState({
@@ -27,7 +26,7 @@ const ContactFrom = () => {
         type: "personal"
       });
     }
-  }, [contactContext, current]);
+  }, [ContactContext, current]);
 
   const onChange = e =>
     setContact({
@@ -42,6 +41,7 @@ const ContactFrom = () => {
       addContact(Contact);
     } else {
       updateContact(Contact);
+      clearCurrent();
     }
 
     setContact({
