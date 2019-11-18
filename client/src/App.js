@@ -1,28 +1,31 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/pages/Home';
-import About from './components/pages/About';
-import Navbar from './components/layout/Navbar';
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import Navbar from "./components/layout/Navbar";
 
-import ContactState from './context/contact/ContactState';
+import ContactState from "./context/contact/ContactState";
+import AuthtState from "./context/auth/AuthState";
 
-import './App.css';
+import "./App.css";
 
 const App = () => {
   return (
-    <ContactState>
-      <Router>
-        <Fragment>
-          <Navbar />
-          <div className='container'>
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/about' component={About} />
-            </Switch>
-          </div>
-        </Fragment>
-      </Router>
-    </ContactState>
+    <AuthtState>
+      <ContactState>
+        <Router>
+          <Fragment>
+            <Navbar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/about" component={About} />
+              </Switch>
+            </div>
+          </Fragment>
+        </Router>
+      </ContactState>
+    </AuthtState>
   );
 };
 
