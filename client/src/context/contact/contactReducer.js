@@ -6,7 +6,8 @@ import {
   UPDATE_CONTACT,
   FILTER_CONTACT,
   CLEAR_FILTER,
-  GET_CONTACT
+  GET_CONTACT,
+  CLEAR_CONTACT
 } from '../types';
 
 export default (state, action) => {
@@ -71,6 +72,15 @@ export default (state, action) => {
       return {
         ...state,
         filtered: null
+      };
+
+    case CLEAR_CONTACT:
+      return {
+        ...state,
+        contacts: null,
+        filtered: null,
+        error: null,
+        current: null
       };
 
     default:
